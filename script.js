@@ -18,10 +18,12 @@ console.log(scoreLimitP);
 // ============= UPDATE VARIABLES ============= //
 
 function updateP1Score(p_scoreToUpdate) {
-  scoreP1Span.textContent = `${p_scoreToUpdate}`;
-  scorePlayerOne = p_scoreToUpdate;
-  console.log(scorePlayerOne);
-  console.log(scoreLimit);
+  if (p_scoreToUpdate !== undefined) {
+    scoreP1Span.textContent = `${p_scoreToUpdate}`;
+    scorePlayerOne = p_scoreToUpdate;
+  } else {
+    scoreP1Span.textContent = `${scorePlayerOne}`;
+  }
 }
 
 function updateP1ScoreColor(p_color) {
@@ -29,8 +31,12 @@ function updateP1ScoreColor(p_color) {
 }
 
 function updateP2Score(p_scoreToUpdate) {
-  scoreP2Span.textContent = `${p_scoreToUpdate}`;
-  scorePlayerTwo = p_scoreToUpdate
+  if (p_scoreToUpdate !== undefined) {
+    scoreP2Span.textContent = `${p_scoreToUpdate}`;
+    scorePlayerTwo = p_scoreToUpdate;
+  } else {
+    scoreP2Span.textContent = `${scorePlayerTwo}`;
+  }
 }
 
 function updateP2ScoreColor(p_color) {
@@ -49,7 +55,7 @@ function onClickButtonP1() {
   if (!(scorePlayerOne >= scoreLimit || scorePlayerTwo >= scoreLimit)) {
     console.log("oui");
     scorePlayerOne += 1;
-    updateP1Score(scorePlayerOne);
+    updateP1Score();
     if (scorePlayerOne === scoreLimit) {
       updateP1ScoreColor("green");
     }
@@ -60,21 +66,26 @@ function onClickButtonP2() {
   if (!(scorePlayerOne >= scoreLimit || scorePlayerTwo >= scoreLimit)) {
     console.log("oui");
     scorePlayerTwo += 1;
-    updateP2Score(scorePlayerTwo);
+    updateP2Score();
     if (scorePlayerTwo === scoreLimit) {
       updateP2ScoreColor("green");
     }
   }
 }
 
-function onClickButtonReset() {
+function resetGame() {
   updateP1Score(0);
   updateP2Score(0);
   updateP1ScoreColor("black");
   updateP2ScoreColor("black");
 }
 
+function onClickButtonReset() {
+  resetGame();
+}
+
 function onInputHitted() {
+  resetGame();
   scoreLimit = Number(scoreLimitInput.value);
   updateScoreLimit(scoreLimit);
 }
