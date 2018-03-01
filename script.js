@@ -15,14 +15,14 @@ console.log(scoreP1Span);
 console.log(scoreP2Span);
 console.log(scoreLimitP);
 
+// ============= UPDATE VARIABLES ============= //
+
 function updateP1Score(p_scoreToUpdate) {
   scoreP1Span.textContent = `${p_scoreToUpdate}`;
   scorePlayerOne = p_scoreToUpdate;
   console.log(scorePlayerOne);
   console.log(scoreLimit);
 }
-
-// ============= UPDATE VARIABLES ============= //
 
 function updateP1ScoreColor(p_color) {
   scoreP1Span.style.color = p_color;
@@ -50,7 +50,7 @@ function onClickButtonP1() {
     console.log("oui");
     scorePlayerOne += 1;
     updateP1Score(scorePlayerOne);
-    if (scorePlayerOne == scoreLimit) {
+    if (scorePlayerOne === scoreLimit) {
       updateP1ScoreColor("green");
     }
   }
@@ -61,7 +61,7 @@ function onClickButtonP2() {
     console.log("oui");
     scorePlayerTwo += 1;
     updateP2Score(scorePlayerTwo);
-    if (scorePlayerTwo == scoreLimit) {
+    if (scorePlayerTwo === scoreLimit) {
       updateP2ScoreColor("green");
     }
   }
@@ -75,7 +75,7 @@ function onClickButtonReset() {
 }
 
 function onInputHitted() {
-  scoreLimit = scoreLimitInput.value;
+  scoreLimit = Number(scoreLimitInput.value);
   updateScoreLimit(scoreLimit);
 }
 // ============= END OF EVENTS LISTENERS FUNCTIONS ============= //
@@ -85,4 +85,4 @@ scoreLimitP.textContent = `Playing to: ${scoreLimit}`;
 buttonPlayerOne.addEventListener("click", onClickButtonP1);
 buttonPlayerTwo.addEventListener("click", onClickButtonP2);
 buttonReset.addEventListener("click", onClickButtonReset);
-scoreLimitInput.addEventListener("input", onInputHitted);
+scoreLimitInput.addEventListener("change", onInputHitted);
