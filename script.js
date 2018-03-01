@@ -22,6 +22,8 @@ function updateP1Score(p_scoreToUpdate) {
   console.log(scoreLimit);
 }
 
+// ============= UPDATE VARIABLES ============= //
+
 function updateP1ScoreColor(p_color) {
   scoreP1Span.style.color = p_color;
 }
@@ -38,6 +40,10 @@ function updateP2ScoreColor(p_color) {
 function updateScoreLimit() {
   scoreLimitP.textContent = `Playing to: ${scoreLimit}`;
 }
+// ============= END OF UPDATE VARIABLES ============= //
+
+
+// ============= EVENTS LISTENERS FUNCTIONS ============= //
 
 function onClickButtonP1() {
   if (!(scorePlayerOne >= scoreLimit || scorePlayerTwo >= scoreLimit)) {
@@ -72,6 +78,7 @@ function onInputHitted() {
   scoreLimit = scoreLimitInput.value;
   updateScoreLimit(scoreLimit);
 }
+// ============= END OF EVENTS LISTENERS FUNCTIONS ============= //
 
 scoreLimitP.textContent = `Playing to: ${scoreLimit}`;
 
